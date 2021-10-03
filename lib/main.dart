@@ -35,15 +35,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Text('Welcome to Ask Us',
-        style: TextStyle(
-          fontSize: 30,
-          color: Colors.blue,
-        ),
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.blue,
+          ),
         ),
       ),
     );
   }
 }
-
-
-
