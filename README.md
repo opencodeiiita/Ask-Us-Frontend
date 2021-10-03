@@ -21,6 +21,11 @@ Ask Us is a flutter based android app. It's basically a discussion forum somewha
 
 Before cloning the project make sure you have set up the IDE correctly according to the resources given in the getting started section. 
 
+## App Design
+
+To get an idea how the app will look like, head over to the following figma link:- 
+- [Ask Us Design](https://www.figma.com/file/DrJfbkx9c5h2ac4dQtfgWn/AskUs?node-id=0%3A1)
+
 ## How to contribute
 
 - After setting up the project on the local system, go to the issues section to claim issues.
