@@ -16,8 +16,8 @@ class AnswerScreen extends StatelessWidget {
                   16, MediaQuery.of(context).size.height * 0.05, 16, 0),
               decoration: BoxDecoration(
                 color: Color(0xffD66853),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(35),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(35),
                 ),
               ),
               child: SizedBox(
