@@ -1,12 +1,10 @@
 // ASK US APP
 
-import 'package:ask_us/answer_screen.dart';
+import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-
   runApp(MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -37,14 +35,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Text('Welcome to Ask Us',
-        style: TextStyle(fontFamily: 'RobotoMono'),
-
-          style: TextStyle(
+        style: TextStyle(fontFamily: 'RobotoMono',
             fontSize: 30,
             color: Colors.blue,
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBarWidget(),
     );
   }
 }
