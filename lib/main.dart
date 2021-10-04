@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AnswerScreen(),//HomePage(),
+      theme: ThemeData(fontFamily: 'Raleway'),
+      home: HomePage(),
     );
   }
 }
@@ -36,6 +37,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Text('Welcome to Ask Us',
+        style: TextStyle(fontFamily: 'RobotoMono'),
+
           style: TextStyle(
             fontSize: 30,
             color: Colors.blue,
