@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-  ));
-}
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
-class MyApp extends StatefulWidget {
   @override
-  _State createState() => _State();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _State extends State<MyApp> {
+class _LoginScreenState extends State<LoginScreen> {
+
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -69,7 +66,7 @@ class _State extends State<MyApp> {
                   child: Text(
 
                     'Forgot Password',
-                   textAlign: TextAlign.left,
+                    textAlign: TextAlign.left,
                   ),
 
                 ),
@@ -100,7 +97,7 @@ class _State extends State<MyApp> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                            'Not a member yet?',
+                          'Not a member yet?',
                           style: TextStyle(fontSize: 18),
                         ),
                         FlatButton(
