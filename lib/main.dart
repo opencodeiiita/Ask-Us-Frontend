@@ -2,6 +2,8 @@
 
 import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'sign_up.dart';
+import 'profile_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,8 +36,12 @@ class _HomePageState extends State<HomePage> {
         title: Text('Ask Us App'),
       ),
       body: Center(
+
+      
+
         child: Text('Welcome to Ask Us',
         style: TextStyle(fontFamily: 'RobotoMono',
+
             fontSize: 30,
             color: Colors.blue,
           ),
