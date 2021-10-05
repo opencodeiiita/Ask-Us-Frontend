@@ -1,5 +1,6 @@
 // ASK US APP
 
+import 'package:ask_us/login.dart' as lg;
 import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'sign_up.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Raleway'),
-      home: HomePage(),
+      home: lg.MyApp(),
     );
   }
 }
