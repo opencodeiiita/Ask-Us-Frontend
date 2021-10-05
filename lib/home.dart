@@ -139,12 +139,12 @@ class Question{
 }
 
 List<Question> list=[
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works??????????????????????????",image: "images/img.png",chat: "3",upvote: "2"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works??????????????????????????",image: "assets/images/img.png",chat: "3",upvote: "2"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
 ];

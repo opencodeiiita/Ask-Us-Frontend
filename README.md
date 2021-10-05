@@ -32,6 +32,9 @@ To get an idea how the app will look like, head over to the following figma link
 - Remember to regularly pull the updates made by others on the repo to avoid merge conflicts.
 - Read all the guidelines carefully before making any pull request on the repo.
 
+IMPORTANT NOTE:-
+Please attach screenshots of the runnuing app on your emulator of the changes that you have done before making a pr.
+
 ## Guidelines
 
 Please help us follow the best practice to make it easy for the reviewer as well as the contributor. We want to focus on the code quality more than on managing pull request ethics.

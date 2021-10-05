@@ -1,5 +1,6 @@
 // ASK US APP
 
+import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'sign_up.dart';
 import 'profile_page.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Raleway'),
       home: HomePage(),
     );
   }
@@ -34,14 +36,18 @@ class _HomePageState extends State<HomePage> {
         title: Text('Ask Us App'),
       ),
       body: Center(
-        child: Text(
-          'Welcome to Ask Us',
-          style: TextStyle(
+
+      
+
+        child: Text('Welcome to Ask Us',
+        style: TextStyle(fontFamily: 'RobotoMono',
+
             fontSize: 30,
             color: Colors.blue,
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBarWidget(),
     );
   }
 }
