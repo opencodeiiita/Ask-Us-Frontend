@@ -1,11 +1,11 @@
 // ASK US APP
 
 import 'package:flutter/material.dart';
+import 'sign_up.dart';
+import 'profile_page.dart';
 
 void main() {
-
   runApp(MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +34,8 @@ class _HomePageState extends State<HomePage> {
         title: Text('Ask Us App'),
       ),
       body: Center(
-        child: Text('Welcome to Ask Us',
+        child: Text(
+          'Welcome to Ask Us',
           style: TextStyle(
             fontSize: 30,
             color: Colors.blue,

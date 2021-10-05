@@ -151,7 +151,10 @@ class SignUpScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Already a member? "),
+                Text(
+                  "Already a member? ",
+                  style: TextStyle(color: Colors.white),
+                ),
                 SizedBox(width: size.height * 0.02),
                 GestureDetector(
                   onTap: (
@@ -161,6 +164,7 @@ class SignUpScreen extends StatelessWidget {
                     "Log In",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                 )
