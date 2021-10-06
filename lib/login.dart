@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     home: Login(),
-//   ));
-// }
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
-class Login extends StatefulWidget {
   @override
-  _State createState() => _State();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _State extends State<Login> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
