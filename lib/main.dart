@@ -39,12 +39,10 @@ class _HomePageState extends State<HomePage> {
         title: Text('Ask Us App'),
       ),
       body: Center(
-
-      
-
-        child: Text('Welcome to Ask Us',
-        style: TextStyle(fontFamily: 'RobotoMono',
-
+        child: Text(
+          'Welcome to Ask Us',
+          style: TextStyle(
+            fontFamily: 'RobotoMono',
             fontSize: 30,
             color: Colors.blue,
           ),

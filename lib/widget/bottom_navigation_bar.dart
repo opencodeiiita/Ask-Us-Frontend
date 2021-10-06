@@ -1,3 +1,6 @@
+import 'package:ask_us/answer_screen.dart';
+import 'package:ask_us/home.dart';
+import 'package:ask_us/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
@@ -11,27 +14,42 @@ class BottomNavigationBarWidget extends StatefulWidget {
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   Color activeColor = Color(0xffD66853);
   Color inactiveColor = Color(0xffC5C5C5);
+  PageController _pageController = PageController();
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Search Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+
+  List<Widget> _widgetOptions = [
+    HomeScreen(),
+    Scaffold(body: Center(child: Text("Questions Screen"))),
+    AnswerScreen(),
+    ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
+    return Scaffold(
+      body: PageView(
+        children: _widgetOptions,
+        onPageChanged: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        controller: _pageController,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         selectedFontSize: 12,
         unselectedFontSize: 12,
         type: BottomNavigationBarType.fixed,
         onTap: (v) {
-          setState(() {
-            _selectedIndex = v;
-          });
+          setState(
+            () {
+              _selectedIndex = v;
+              _pageController.jumpToPage(
+                _selectedIndex,
+              );
+            },
+          );
         },
         items: [
           BottomNavigationBarItem(
@@ -191,7 +209,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
             ),
           ),
         ],
-      
+      ),
     );
   }
 }

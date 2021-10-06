@@ -24,7 +24,8 @@ String searchIcon = "assets/icons/search_icon.png";
 String profileIcon = "assets/icons/profile.png";
 
 //decoration Items
-BoxDecoration bottomNavigationBarDecoration(Color color) {  //used in bottom navigation bar
+BoxDecoration bottomNavigationBarDecoration(Color color) {
+  //used in bottom navigation bar
   return BoxDecoration(
     border: Border.all(
       color: color,
@@ -38,17 +39,19 @@ BoxDecoration bottomNavigationBarDecoration(Color color) {  //used in bottom nav
   );
 }
 
-BoxDecoration circularContainerDecoration(Color color, Color borderColor, double borderRadius) {  //used mainly in authentication screens
+BoxDecoration circularContainerDecoration(
+    Color color, Color borderColor, double borderRadius) {
+  //used mainly in authentication screens
   return BoxDecoration(
     color: color,
     borderRadius: BorderRadius.circular(borderRadius),
-    border: Border.all(
-        width: 1, color: borderColor, style: BorderStyle.solid),
+    border: Border.all(width: 1, color: borderColor, style: BorderStyle.solid),
   );
 }
 
 //textStyles
-TextStyle header1({Color color = blackColor, FontWeight fontWeight = FontWeight.w600}){
+TextStyle header1(
+    {Color color = blackColor, FontWeight fontWeight = FontWeight.w600}) {
   return TextStyle(
     fontSize: 18,
     color: color,
@@ -56,7 +59,8 @@ TextStyle header1({Color color = blackColor, FontWeight fontWeight = FontWeight.
   );
 }
 
-TextStyle header2({Color color = blackColor, FontWeight fontWeight = FontWeight.w600}){
+TextStyle header2(
+    {Color color = blackColor, FontWeight fontWeight = FontWeight.w600}) {
   return TextStyle(
     fontSize: 16,
     color: color,
@@ -64,7 +68,8 @@ TextStyle header2({Color color = blackColor, FontWeight fontWeight = FontWeight.
   );
 }
 
-TextStyle header3({Color color = blackColor, FontWeight fontWeight = FontWeight.w600}){
+TextStyle header3(
+    {Color color = blackColor, FontWeight fontWeight = FontWeight.w600}) {
   return TextStyle(
     fontSize: 14,
     color: color,
@@ -72,7 +77,8 @@ TextStyle header3({Color color = blackColor, FontWeight fontWeight = FontWeight.
   );
 }
 
-TextStyle header4({Color color = blackColor, FontWeight fontWeight = FontWeight.w600}){
+TextStyle header4(
+    {Color color = blackColor, FontWeight fontWeight = FontWeight.w600}) {
   return TextStyle(
     fontSize: 12,
     color: color,
@@ -80,7 +86,7 @@ TextStyle header4({Color color = blackColor, FontWeight fontWeight = FontWeight.
   );
 }
 
-TextStyle headerCustom(double fontSize, Color color, FontWeight fontWeight){
+TextStyle headerCustom(double fontSize, Color color, FontWeight fontWeight) {
   return TextStyle(
     fontSize: fontSize,
     color: color,

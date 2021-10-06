@@ -24,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: InputDecoration(
                         prefixIcon: Icon(CupertinoIcons.search),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.horizontal(left: Radius.circular(50),right: Radius.circular(50)),
+                          borderRadius: BorderRadius.horizontal(
+                              left: Radius.circular(50),
+                              right: Radius.circular(50)),
                         ),
                         fillColor: Colors.white,
                         labelText: "Search",
@@ -40,12 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            Flexible(child: ListView(
-              children: List.generate(list.length, (index) =>
-                  question(index),
+            Flexible(
+                child: ListView(
+              children: List.generate(
+                list.length,
+                (index) => question(index),
               ),
-            )
-            )
+            ))
           ],
         ),
       ),
@@ -53,13 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget question(int index){
+Widget question(int index) {
   return Container(
     margin: EdgeInsets.all(10),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        border: Border.all(color: Colors.black, width: 0.3)
-    ),
+        border: Border.all(color: Colors.black, width: 0.3)),
     child: Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -70,14 +72,12 @@ Widget question(int index){
             children: [
               //SizedBox(width: 50,),
               Flexible(
-                child: Text(list[index].question,
+                child: Text(
+                  list[index].question,
                   softWrap: false,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
               ),
             ],
@@ -87,29 +87,37 @@ Widget question(int index){
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CircleAvatar(child: Image.asset(list[index].image),),
-                SizedBox(width: 10,),
+                CircleAvatar(
+                  child: Image.asset(list[index].image),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(list[index].name,style: TextStyle(fontWeight: FontWeight.w700),),
+                    Text(
+                      list[index].name,
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
                     Text(list[index].email),
                   ],
                 )
               ],
             ),
           ),
-          Row(children:[
-            Flexible(child:
-            Text(list[index].description,
+          Row(children: [
+            Flexible(
+                child: Text(
+              list[index].description,
               softWrap: false,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
-            )
-            )
-          ]
+            ))
+          ]),
+          SizedBox(
+            height: 10,
           ),
-          SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -119,7 +127,9 @@ Widget question(int index){
                   children: [
                     Icon(CupertinoIcons.up_arrow),
                     Text(list[index].upvote),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Icon(CupertinoIcons.chat_bubble_fill),
                     Text(list[index].chat),
                   ],
@@ -133,18 +143,82 @@ Widget question(int index){
     ),
   );
 }
-class Question{
-  String name,email,question,description,image,upvote,chat;
-  Question({required this.name,required this.email, required this.description, required this.question,required this.image,required this.chat,required this.upvote});
+
+class Question {
+  String name, email, question, description, image, upvote, chat;
+  Question(
+      {required this.name,
+      required this.email,
+      required this.description,
+      required this.question,
+      required this.image,
+      required this.chat,
+      required this.upvote});
 }
 
-List<Question> list=[
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works??????????????????????????",image: "assets/images/img.png",chat: "3",upvote: "2"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
-  Question(name: "Gautam", email: "darkknight131714@gmail.com", description: "My Question is Practice", question: "I want to know how this works?",image: "assets/images/img.png",chat: "3",upvote: "1"),
+List<Question> list = [
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works??????????????????????????",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "2"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
+  Question(
+      name: "Gautam",
+      email: "darkknight131714@gmail.com",
+      description: "My Question is Practice",
+      question: "I want to know how this works?",
+      image: "assets/images/img.png",
+      chat: "3",
+      upvote: "1"),
 ];
