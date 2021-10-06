@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     home: Login(),
+//   ));
+// }
 
-class MyApp extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<MyApp> {
+class _State extends State<Login> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0XFFE7EBE7),
         body: Padding(
-            padding: EdgeInsets.fromLTRB(10, 100, 10, 10),
+            padding: EdgeInsets.fromLTRB(10, 60, 10, 50),
             child: ListView(
               children: <Widget>[
                 Container(
@@ -27,92 +29,209 @@ class _State extends State<MyApp> {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       'Log In',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 24,
+                          color: Color.fromRGBO(0, 0, 0, 0.75)),
                     )),
-
                 Container(
+                  height: 60,
                   padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                   child: TextField(
-
                     controller: nameController,
-
                     decoration: InputDecoration(
-
-                      border: OutlineInputBorder(),
-
+                      contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      filled: true,
+                      fillColor: Color(0xFFDADADA),
+                      labelStyle: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0XFF727272)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide:
+                            BorderSide(style: BorderStyle.none, width: 0),
+                      ),
                       labelText: 'Email/AskUs ID',
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 19,
+                ),
                 Container(
+                  height: 50,
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
                     obscureText: true,
                     controller: passwordController,
-
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      filled: true,
+                      fillColor: Color(0xFFDADADA),
+                      labelStyle: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0XFF727272)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide:
+                            BorderSide(style: BorderStyle.none, width: 0),
+                      ),
                       labelText: 'Password',
                     ),
                   ),
                 ),
-
-                FlatButton(
-                  padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
-                  onPressed: (){
-                    //forgot password screen
-                  },
-                  textColor: Colors.blue,
-                  child: Text(
-
-                    'Forgot Password',
-                   textAlign: TextAlign.left,
+                Container(
+                  child: Row(
+                    children: [
+                      Spacer(),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
+                          ),
+                          onPressed: () {
+                            //forgot password screen
+                          },
+                          child: Text(
+                            'Forgot Password',
+                            textAlign: TextAlign.right,
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 13,
+                              color: Color.fromRGBO(214, 104, 83, 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-
                 ),
                 Container(
-                    height: 50,
+                    height: 40,
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: RaisedButton(
-                      textColor: Colors.white,
-                      color: Colors.deepOrangeAccent,
-                      child: Text('Login'),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        primary: Color.fromRGBO(214, 104, 83, 1),
+                      ),
+                      onPressed: () {
+                        print(nameController.text);
+                        print(passwordController.text);
+                      },
+                      child: Text(
+                        'Log in',
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(60, 37, 60, 0),
+                  child: Container(
+                      child: Row(children: [
+                    SizedBox(
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.60))),
+                      height: 1.5,
+                      width: 57,
+                    ),
+                    Container(
+                      child: Text(
+                        'OR',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                          color: Color(0XFF727272),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.60))),
+                      height: 1.5,
+                      width: 57,
+                    ),
+                  ], mainAxisAlignment: MainAxisAlignment.spaceEvenly)),
+                ),
+                Container(
+                    padding: EdgeInsets.fromLTRB(10, 37, 10, 0),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          primary: Color(0XFFD66853).withOpacity(0.29),
+                          backgroundColor: Color(0XFFD66853).withOpacity(0.29),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 250,
+                              child: FittedBox(
+                                child: Text(
+                                  'Log In with your Google Account',
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 12,
+                                    color: Color.fromRGBO(0, 0, 0, 0.6),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                                child:
+                                    Image.asset('assets/images/GoogleIcon.png'))
+                          ],
+                        ),
+                      ),
                       onPressed: () {
                         print(nameController.text);
                         print(passwordController.text);
                       },
                     )),
                 Container(
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'login with your google account',
-                    ),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.fromLTRB(10, 170, 10, 0),
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                     child: Row(
                       children: <Widget>[
                         Text(
-                            'Not a member yet?',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        FlatButton(
-                          textColor: Colors.deepOrangeAccent,
-                          child: Text(
-                            'join now',
-                            style: TextStyle(fontSize: 20),
+                          'Not a member yet?',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 13,
+                            color: Colors.black,
                           ),
-                          onPressed: () {
-                            //signup screen
-                          },
-                        )
+                        ),
+                        TextButton(
+                            child: Text(
+                              'join now',
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                fontSize: 13,
+                                color: Color.fromRGBO(214, 104, 83, 1),
+                              ),
+                            ),
+                            onPressed: () {
+                              //signup screen
+                            }),
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
                     ))
