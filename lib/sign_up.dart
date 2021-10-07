@@ -12,12 +12,19 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "AskUs",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.white),
+            Row(
+              children: [
+                Text(
+                  "AskUs",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.white),
+                ),
+                CircleAvatar(
+                  backgroundImage: NetworkImage('https://www.library.hbs.edu/var/ezdemo_site/storage/images/_aliases/cardsquare/media/multimedia-images-videos/ifactory-images/ifactory-special-collections-front-page-images/ask-us-icon/637968-1-eng-US/Ask-Us-Icon.jpg'),
+                ),
+              ],
             ),
             SizedBox(height: size.height * 0.07),
             Container(
