@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: AppBar(
             shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(10))),
+                    BorderRadius.vertical(bottom: Radius.circular(25))),
             centerTitle: true,
             backgroundColor: Color(0xffD66853),
             title: Padding(
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Flexible(
                     child: Container(
                       alignment: Alignment.bottomCenter,
-                      height: 30,
+                      height: 40,
                       child: TextField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(CupertinoIcons.search),
