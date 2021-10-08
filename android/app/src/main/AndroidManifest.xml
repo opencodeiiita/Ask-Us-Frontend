@@ -2,7 +2,8 @@
     package="com.example.ask_us">
    <application
         android:label="ask_us"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ask"
+        >
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
