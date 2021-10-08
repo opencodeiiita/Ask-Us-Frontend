@@ -26,16 +26,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(CupertinoIcons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(50),
-                              right: Radius.circular(50)),
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      height: 30,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(CupertinoIcons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.horizontal(
+                                left: Radius.circular(50),
+                                right: Radius.circular(50)),
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
                         ),
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ),
                   ),
