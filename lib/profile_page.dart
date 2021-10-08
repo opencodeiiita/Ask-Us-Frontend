@@ -1,7 +1,67 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class ProfilePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  File? _image;
+
+  _imgFromCamera() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image =
+        await _picker.pickImage(source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      _image = File(image!.path);
+    });
+  }
+
+  _imgFromGallery() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image =
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = File(image!.path);
+    });
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +98,36 @@ class ProfilePage extends StatelessWidget {
               ),
               Positioned(
                 bottom: -50,
-                child: CircleAvatar(
-                  radius: 80,
-                  backgroundColor: Colors.white,
-                  backgroundImage: NetworkImage(
-                      'https://th.bing.com/th/id/OIP.4d8-5ZJ6WhMc0SrABL_NnwHaHa?pid=ImgDet&w=525&h=525&rs=1'),
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 80,
+                      backgroundColor: Colors.white,
+                      backgroundImage: _image == null
+                          ? NetworkImage(
+                              'https://th.bing.com/th/id/OIP.4d8-5ZJ6WhMc0SrABL_NnwHaHa?pid=ImgDet&w=525&h=525&rs=1')
+                          : Image.file(_image!).image,
+                    ),
+                    Positioned(
+                      bottom: 25,
+                      right: 13,
+                      child: InkWell(
+                        onTap: () {
+                          _showPicker(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 20,
+                          child: InkWell(
+                            child: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 19,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
