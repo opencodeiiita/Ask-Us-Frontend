@@ -14,23 +14,32 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80),
           child: AppBar(
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(25))),
+            centerTitle: true,
             backgroundColor: Color(0xffD66853),
             title: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(2.0),
+              // padding: const EdgeInsets.fromLTRB(2.0, 5.0, 2.0, 0.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(CupertinoIcons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(50),
-                              right: Radius.circular(50)),
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      height: 40,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(CupertinoIcons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.horizontal(
+                                left: Radius.circular(50),
+                                right: Radius.circular(50)),
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
                         ),
-                        fillColor: Colors.white,
-                        labelText: "Search",
-                        filled: true,
                       ),
                     ),
                   ),
@@ -65,10 +74,10 @@ Widget question(int index) {
     child: Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               //SizedBox(width: 50,),
               Flexible(
