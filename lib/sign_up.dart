@@ -12,19 +12,13 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
-              children: [
-                Text(
-                  "AskUs",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Colors.white),
-                ),
-                CircleAvatar(
-                  backgroundImage: NetworkImage('https://www.library.hbs.edu/var/ezdemo_site/storage/images/_aliases/cardsquare/media/multimedia-images-videos/ifactory-images/ifactory-special-collections-front-page-images/ask-us-icon/637968-1-eng-US/Ask-Us-Icon.jpg'),
-                ),
-              ],
+            Text(
+              "AskUs",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.white),
             ),
             SizedBox(height: size.height * 0.07),
             Container(
@@ -36,12 +30,15 @@ class SignUpScreen extends StatelessWidget {
                       width: 1,
                       color: Color(0xFFD66853),
                       style: BorderStyle.solid)),
-              child: TextField(
-                decoration: InputDecoration(
-                    hintText: 'Email',
-                    contentPadding: EdgeInsets.all(15),
-                    border: InputBorder.none),
-                onChanged: (value) {},
+              child: Container(
+                height: 40,
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Email',
+                      contentPadding: EdgeInsets.fromLTRB(20, 80, 20, 10),
+                      border: InputBorder.none),
+                  onChanged: (value) {},
+                ),
               ),
             ),
             SizedBox(height: size.height * 0.02),
@@ -54,13 +51,15 @@ class SignUpScreen extends StatelessWidget {
                       width: 1,
                       color: Color(0xFFD66853),
                       style: BorderStyle.solid)),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: 'Password',
-                    contentPadding: EdgeInsets.all(15),
-                    border: InputBorder.none),
-                onChanged: (value) {},
+              child: Container(
+                height: 40,
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Password',
+                      contentPadding: EdgeInsets.fromLTRB(20, 80, 20, 10),
+                      border: InputBorder.none),
+                  onChanged: (value) {},
+                ),
               ),
             ),
             SizedBox(height: size.height * 0.02),
@@ -73,13 +72,15 @@ class SignUpScreen extends StatelessWidget {
                       width: 1,
                       color: Color(0xFFD66853),
                       style: BorderStyle.solid)),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: 'Confirm Password',
-                    contentPadding: EdgeInsets.all(15),
-                    border: InputBorder.none),
-                onChanged: (value) {},
+              child: Container(
+                height: 40,
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Confirm Password',
+                      contentPadding: EdgeInsets.fromLTRB(20, 80, 20, 10),
+                      border: InputBorder.none),
+                  onChanged: (value) {},
+                ),
               ),
             ),
             SizedBox(height: size.height * 0.07),
@@ -110,7 +111,10 @@ class SignUpScreen extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Expanded(child: Divider()),
-                  Text("OR"),
+                  Text(
+                    "OR",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   Expanded(child: Divider()),
                 ],
               ),
@@ -123,15 +127,19 @@ class SignUpScreen extends StatelessWidget {
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    padding: EdgeInsets.all(20),
+                    height: 40,
+                    width: 155,
+                    // margin: EdgeInsets.symmetric(horizontal: 10),
+                    // padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFFF3D1CB),
                     ),
-                    child: Text(
-                      "Google",
-                      textAlign: TextAlign.center,
+                    child: Center(
+                      child: Text(
+                        "Google",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
@@ -140,15 +148,19 @@ class SignUpScreen extends StatelessWidget {
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    padding: EdgeInsets.all(20),
+                    height: 40,
+                    width: 155,
+                    // margin: EdgeInsets.symmetric(horizontal: 10),
+                    // padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFFF3D1CB),
                     ),
-                    child: Text(
-                      "Facebook",
-                      textAlign: TextAlign.center,
+                    child: Center(
+                      child: Text(
+                        "Facebook",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
