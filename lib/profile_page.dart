@@ -1,7 +1,34 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
+class SizeConfig {
+  static late MediaQueryData _mediaQueryData;
+  static late double screenWidth;
+  static late double screenHeight;
+  static late double blockSizeHorizontal;
+  static late double blockSizeVertical;
+  static late double _safeAreaHorizontal;
+  static late double _safeAreaVertical;
+  static late double safeBlockHorizontal;
+  static late double safeBlockVertical;
+
+  void init(BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+    _safeAreaHorizontal =
+        _mediaQueryData.padding.left + _mediaQueryData.padding.right;
+    _safeAreaVertical =
+        _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
+    safeBlockHorizontal = (screenWidth - _safeAreaHorizontal) / 100;
+    safeBlockVertical = (screenHeight - _safeAreaVertical) / 100;
+  }
+}
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -65,8 +92,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height;
-    final _width = MediaQuery.of(context).size.height;
+    SizeConfig().init(context);
+
     String name = 'Robb stark';
     String id = 'king_in_the_north';
     String mail = 'robb@gmail.com';
@@ -80,28 +107,37 @@ class _ProfilePageState extends State<ProfilePage> {
             alignment: Alignment.center,
             children: <Widget>[
               Container(
+                //alignment: ,
+                // padding:
+                //     EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 10),
                 decoration: BoxDecoration(
                   color: Color(0xFFD66853),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(
+                      SizeConfig.blockSizeHorizontal * 10),
                 ),
-                height: _height * .3,
-                width: _width,
-                child: Center(
+                // height: blockSizeVertical * .2, //it was 0.3
+                // width: blockSizeHorizontal,
+                height: SizeConfig.blockSizeVertical * 15,
+                width: SizeConfig.blockSizeHorizontal * 100,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: SizeConfig.blockSizeVertical * 4),
                   child: Text(
                     "My Profile",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        fontSize: SizeConfig.blockSizeVertical * 3,
                         color: Colors.white),
                   ),
                 ),
               ),
               Positioned(
-                bottom: -50,
+                bottom: -SizeConfig.blockSizeVertical * 8,
                 child: Stack(
                   children: [
                     CircleAvatar(
-                      radius: 80,
+                      radius: SizeConfig.blockSizeHorizontal * 10,
                       backgroundColor: Colors.white,
                       backgroundImage: _image == null
                           ? NetworkImage(
@@ -109,19 +145,19 @@ class _ProfilePageState extends State<ProfilePage> {
                           : Image.file(_image!).image,
                     ),
                     Positioned(
-                      bottom: 25,
-                      right: 13,
+                      bottom: SizeConfig.blockSizeVertical * 0.05,
+                      right: SizeConfig.blockSizeHorizontal * 0.005,
                       child: InkWell(
                         onTap: () {
                           _showPicker(context);
                         },
                         child: CircleAvatar(
-                          radius: 20,
+                          radius: SizeConfig.blockSizeHorizontal * 3.5,
                           child: InkWell(
                             child: Icon(
                               Icons.edit,
                               color: Colors.white,
-                              size: 19,
+                              size: SizeConfig.blockSizeHorizontal * 4,
                             ),
                           ),
                         ),
@@ -132,10 +168,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ],
           ),
-          SizedBox(height: _height * 0.07),
+          SizedBox(height: SizeConfig.blockSizeVertical * 10),
           Container(
-            padding: EdgeInsets.all(20),
-            width: _width * .4,
+            padding: EdgeInsets.only(
+                left: SizeConfig.blockSizeHorizontal * 4), //20 tha
+            width: SizeConfig.blockSizeHorizontal * 90,
+            height: SizeConfig.blockSizeVertical * 25,
             decoration: BoxDecoration(
                 color: Color(0xFFE7EBE7),
                 borderRadius: BorderRadius.circular(20),
@@ -144,58 +182,76 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "Name:",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 2.5,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       "AskUs ID:",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 2.5,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       "Email:",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 2.5,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       "Phone No:",
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 2.5,
+                          color: Colors.black),
                     ),
                   ],
                 ),
-                SizedBox(width: _width * 0.08),
+                SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       name,
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 3,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       id,
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 3,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       mail,
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 3,
+                          color: Colors.black),
                     ),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
                     Text(
                       ph,
-                      style: TextStyle(fontSize: 15, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeVertical * 3,
+                          color: Colors.black),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          SizedBox(height: _height * 0.07),
+          SizedBox(height: SizeConfig.blockSizeVertical * 3),
           Container(
             child: Column(
               children: <Widget>[
@@ -204,18 +260,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    width: _width * .4,
+                    height: SizeConfig.blockSizeVertical * 7,
+                    width: SizeConfig.blockSizeHorizontal * 90,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFE5DED8)),
                     child: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "My Questions",
                             style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.5,
                               color: Colors.black,
                             ),
                             textAlign: TextAlign.start,
@@ -226,24 +285,27 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: _height * 0.01),
+                SizedBox(height: SizeConfig.blockSizeVertical * 1),
                 GestureDetector(
                   onTap: (
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    width: _width * .4,
+                    height: SizeConfig.blockSizeVertical * 7,
+                    width: SizeConfig.blockSizeHorizontal * 90,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFE5DED8)),
                     child: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "My Answers",
                             style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.5,
                               color: Colors.black,
                             ),
                             textAlign: TextAlign.start,
@@ -254,24 +316,27 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: _height * 0.01),
+                SizedBox(height: SizeConfig.blockSizeVertical * 1),
                 GestureDetector(
                   onTap: (
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    width: _width * .4,
+                    height: SizeConfig.blockSizeVertical * 7,
+                    width: SizeConfig.blockSizeHorizontal * 90,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFE5DED8)),
                     child: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "My Bookmarks",
                             style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.5,
                               color: Colors.black,
                             ),
                             textAlign: TextAlign.start,
@@ -282,24 +347,27 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: _height * 0.01),
+                SizedBox(height: SizeConfig.blockSizeVertical * 1),
                 GestureDetector(
                   onTap: (
                       //functionality yet to be added
                       ) {},
                   child: Container(
-                    width: _width * .4,
+                    height: SizeConfig.blockSizeVertical * 7,
+                    width: SizeConfig.blockSizeHorizontal * 90,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFE5DED8)),
                     child: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Settings",
                             style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.5,
                               color: Colors.black,
                             ),
                             textAlign: TextAlign.start,
@@ -318,3 +386,190 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+
+//           SizedBox(height: _height * 0.07),
+//           Container(
+//             padding: EdgeInsets.all(20),
+//             width: _width * .4,
+//             decoration: BoxDecoration(
+//                 color: Color(0xFFE7EBE7),
+//                 borderRadius: BorderRadius.circular(20),
+//                 boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 1)]),
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               children: <Widget>[
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: <Widget>[
+//                     Text(
+//                       "Name:",
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       "AskUs ID:",
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       "Email:",
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       "Phone No:",
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                   ],
+//                 ),
+//                 SizedBox(width: _width * 0.08),
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: <Widget>[
+//                     Text(
+//                       name,
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       id,
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       mail,
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                     SizedBox(height: _height * 0.02),
+//                     Text(
+//                       ph,
+//                       style: TextStyle(fontSize: 15, color: Colors.black),
+//                     ),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//           ),
+//           SizedBox(height: _height * 0.07),
+//           Container(
+//             child: Column(
+//               children: <Widget>[
+//                 GestureDetector(
+//                   onTap: (
+//                       //functionality yet to be added
+//                       ) {},
+//                   child: Container(
+//                     width: _width * .4,
+//                     decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         color: Color(0xFFE5DED8)),
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(15),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         children: [
+//                           Text(
+//                             "My Questions",
+//                             style: TextStyle(
+//                               color: Colors.black,
+//                             ),
+//                             textAlign: TextAlign.start,
+//                           ),
+//                           Icon(Icons.arrow_forward_ios_sharp),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 SizedBox(height: _height * 0.01),
+//                 GestureDetector(
+//                   onTap: (
+//                       //functionality yet to be added
+//                       ) {},
+//                   child: Container(
+//                     width: _width * .4,
+//                     decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         color: Color(0xFFE5DED8)),
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(15),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         children: [
+//                           Text(
+//                             "My Answers",
+//                             style: TextStyle(
+//                               color: Colors.black,
+//                             ),
+//                             textAlign: TextAlign.start,
+//                           ),
+//                           Icon(Icons.arrow_forward_ios_sharp),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 SizedBox(height: _height * 0.01),
+//                 GestureDetector(
+//                   onTap: (
+//                       //functionality yet to be added
+//                       ) {},
+//                   child: Container(
+//                     width: _width * .4,
+//                     decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         color: Color(0xFFE5DED8)),
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(15),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         children: [
+//                           Text(
+//                             "My Bookmarks",
+//                             style: TextStyle(
+//                               color: Colors.black,
+//                             ),
+//                             textAlign: TextAlign.start,
+//                           ),
+//                           Icon(Icons.arrow_forward_ios_sharp),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 SizedBox(height: _height * 0.01),
+//                 GestureDetector(
+//                   onTap: (
+//                       //functionality yet to be added
+//                       ) {},
+//                   child: Container(
+//                     width: _width * .4,
+//                     decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         color: Color(0xFFE5DED8)),
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(15),
+//                       child: Row(
+//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                         children: [
+//                           Text(
+//                             "Settings",
+//                             style: TextStyle(
+//                               color: Colors.black,
+//                             ),
+//                             textAlign: TextAlign.start,
+//                           ),
+//                           Icon(Icons.arrow_forward_ios_sharp),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
