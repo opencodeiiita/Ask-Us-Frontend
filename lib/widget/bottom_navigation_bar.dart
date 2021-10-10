@@ -1,6 +1,7 @@
 import 'package:ask_us/answer_screen.dart';
 import 'package:ask_us/home.dart';
 import 'package:ask_us/profile_page.dart';
+import 'package:ask_us/question_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
@@ -19,7 +20,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
 
   List<Widget> _widgetOptions = [
     HomeScreen(),
-    Scaffold(body: Center(child: Text("Questions Screen"))),
+    QuestionScreen(),
     AnswerScreen(),
     ProfilePage(),
   ];
