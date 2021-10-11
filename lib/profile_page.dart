@@ -112,8 +112,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 //     EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 10),
                 decoration: BoxDecoration(
                   color: Color(0xFFD66853),
-                  borderRadius: BorderRadius.circular(
-                      SizeConfig.blockSizeHorizontal * 10),
+
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(SizeConfig.blockSizeHorizontal*5)
+                  ),
                 ),
                 // height: blockSizeVertical * .2, //it was 0.3
                 // width: blockSizeHorizontal,
