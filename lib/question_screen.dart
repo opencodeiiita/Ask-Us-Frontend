@@ -1,4 +1,5 @@
 import 'package:ask_us/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -23,34 +24,82 @@ class _QuestionScreenState extends State<QuestionScreen> {
     'Lorem ipsum dolor sit amet, devolo consectetur adipiscing elit. Lorem ipsum .',
     'Lorem ipsum dolor sit amet, devolo consectetur adipiscing elit. Lorem ipsum .',
   ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
-      body: ListView(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.22,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(
-                16, MediaQuery.of(context).size.height * 0.05, 16, 0),
-            decoration: BoxDecoration(
-              color: Color(0xffD66853),
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(25),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                'AskUs a Question',
-                textAlign: TextAlign.center,
-                style: headerCustom(28, whiteColor, FontWeight.w600),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80),
+          child: AppBar(
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(25))),
+            centerTitle: true,
+            backgroundColor: Color(0xffD66853),
+            title: Padding(
+              padding: const EdgeInsets.all(2.0),
+              // padding: const EdgeInsets.fromLTRB(2.0, 5.0, 2.0, 0.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Container(
+                      alignment: Alignment.bottomCenter,
+                      height: 40,
+                      child: Center(
+                        child: Text(
+                          'AskUs a Question',
+                          textAlign: TextAlign.center,
+                          style: headerCustom(28, whiteColor, FontWeight.w600),
+                        ),
+                      ),
+                      // child: TextField(
+                      //   decoration: InputDecoration(
+                      //     prefixIcon: Icon(CupertinoIcons.search),
+                      //     border: OutlineInputBorder(
+                      //       borderRadius: BorderRadius.horizontal(
+                      //           left: Radius.circular(50),
+                      //           right: Radius.circular(50)),
+                      //     ),
+                      //     fillColor: Colors.white,
+                      //     filled: true,
+                      //   ),
+                      // ),
+                    ),
+                  ),
+                  //Icon(CupertinoIcons.bell_fill)
+                ],
               ),
             ),
           ),
-          buildAskCard(),
-          buildGuidlineCard(),
-        ],
+        ),
+        backgroundColor: Color(0xffE5E5E5),
+        body: ListView(
+          children: [
+            // Container(
+            //   height: MediaQuery.of(context).size.height * 0.22,
+            //   width: MediaQuery.of(context).size.width,
+            //   padding: EdgeInsets.fromLTRB(
+            //       16, MediaQuery.of(context).size.height * 0.05, 16, 0),
+            //   decoration: BoxDecoration(
+            //     color: Color(0xffD66853),
+            //     borderRadius: BorderRadius.vertical(
+            //       bottom: Radius.circular(25),
+            //     ),
+            //   ),
+            //   child: Center(
+            //     child: Text(
+            //       'AskUs a Question',
+            //       textAlign: TextAlign.center,
+            //       style: headerCustom(28, whiteColor, FontWeight.w600),
+            //     ),
+            //   ),
+            // ),
+            buildAskCard(),
+            buildGuidlineCard(),
+          ],
+        ),
       ),
     );
   }
@@ -124,7 +173,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       );
 
   Widget buildGuidlineCard() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
         child: Card(
           color: secondaryColor,
           shape: RoundedRectangleBorder(
@@ -144,15 +193,17 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: ListTile(
-                      leading: Icon(Icons.fiber_manual_record,size: 9,),
+                      leading: Icon(
+                        Icons.fiber_manual_record,
+                        size: 9,
+                      ),
                       title: Transform.translate(
-                        offset: Offset(-28,0),
+                        offset: Offset(-28, 0),
                         child: Text(
-                           i.toString(),
+                          i.toString(),
                           style: TextStyle(fontWeight: FontWeight.w400),
                         ),
                       ),
-                      
                     ),
                   )
               ],
