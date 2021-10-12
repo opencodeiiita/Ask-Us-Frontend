@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       IconButton(
                           icon: Icon(Icons.chat_bubble_rounded),
                           onPressed: () {
-                            
+                            //chat button added
                           }),
                       Text(list[index].chat),
                     ],
