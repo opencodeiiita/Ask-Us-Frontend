@@ -1,3 +1,5 @@
+import 'package:ask_us/main.dart';
+import 'package:ask_us/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -119,8 +121,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         primary: Color.fromRGBO(214, 104, 83, 1),
                       ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext context) => HomePage()));
+                        // print(nameController.text);
+                        // print(passwordController.text);
                       },
                       child: Text(
                         'Log in',
@@ -198,8 +204,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (BuildContext context) => HomePage()));
+                        // print(nameController.text);
+                        // print(passwordController.text);
                       },
                     )),
                 Container(
@@ -226,7 +236,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () {
-                              //signup screen
+                              Navigator.push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (BuildContext context) => SignUpScreen()));
                             }),
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
