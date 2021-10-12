@@ -1,3 +1,4 @@
+import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -74,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ))
           ],
         ),
+       // bottomNavigationBar: BottomNavigationBarWidget(),
       ),
     );
   }
