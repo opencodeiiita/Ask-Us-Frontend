@@ -85,8 +85,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.07),
             GestureDetector(
-              onTap: (
-                  //functionality yet to be added
+              onTap: (//functionality yet to be added
                   ) {},
               child: Container(
                 width: 300,
@@ -123,8 +122,7 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
+                  onTap: (//functionality yet to be added
                       ) {},
                   child: Container(
                     height: 40,
@@ -144,8 +142,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
+                  onTap: (//functionality yet to be added
                       ) {},
                   child: Container(
                     height: 40,
@@ -176,8 +173,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(width: size.height * 0.02),
                 GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
+                  onTap: (//functionality yet to be added
                       ) {},
                   child: Text(
                     "Log In",

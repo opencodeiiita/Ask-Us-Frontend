@@ -155,6 +155,7 @@ Widget question(int index) {
 
 class Question {
   String name, email, question, description, image, upvote, chat;
+
   Question(
       {required this.name,
       required this.email,

@@ -97,7 +97,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             //   ),
             // ),
             buildAskCard(),
-            buildGuidlineCard(),
+            buildGuidelineCard(),
           ],
         ),
       ),
@@ -172,7 +172,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         ),
       );
 
-  Widget buildGuidlineCard() => Padding(
+  Widget buildGuidelineCard() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
         child: Card(
           color: secondaryColor,
