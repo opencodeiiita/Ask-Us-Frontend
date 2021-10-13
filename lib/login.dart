@@ -1,3 +1,5 @@
+import 'package:ask_us/main.dart';
+import 'package:ask_us/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,9 +10,11 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +24,18 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: EdgeInsets.fromLTRB(10, 60, 10, 50),
             child: ListView(
               children: <Widget>[
+                Hero(
+                  tag: 'imageHero',
+                  child:Container(
+                 width: 100.00,
+                 height: 100.00,
+                 decoration: new BoxDecoration(
+                 image: new DecorationImage(
+                     image: ExactAssetImage('assets/images/askUslogo.png'),
+                     fit: BoxFit.fitHeight,
+                     ),
+                   shape: BoxShape.circle,
+                 )),),
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
@@ -119,8 +135,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         primary: Color.fromRGBO(214, 104, 83, 1),
                       ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext context) => HomePage()));
+                        // print(nameController.text);
+                        // print(passwordController.text);
                       },
                       child: Text(
                         'Log in',
@@ -198,8 +218,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (BuildContext context) => HomePage()));
+                        // print(nameController.text);
+                        // print(passwordController.text);
                       },
                     )),
                 Container(
@@ -226,7 +250,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () {
-                              //signup screen
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                                                              builder: (BuildContext context) => SignUpScreen()));
                             }),
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,

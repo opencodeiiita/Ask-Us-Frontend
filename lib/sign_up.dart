@@ -1,7 +1,17 @@
+import 'package:ask_us/login.dart';
+import 'package:ask_us/main.dart';
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
+  @override
+    _SignUpScreenState createState() => _SignUpScreenState();
+}
+class _SignUpScreenState extends State<SignUpScreen>
+   {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +22,18 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Hero(
+                              tag: 'imageHero',
+                              child:Container(
+                             width: 100.00,
+                             height: 100.00,
+                             decoration: new BoxDecoration(
+                             image: new DecorationImage(
+                                 image: ExactAssetImage('assets/images/askUslogo.png'),
+                                 fit: BoxFit.fitHeight,
+                                 ),
+                               shape: BoxShape.circle,
+                             )),),
             Text(
               "AskUs",
               textAlign: TextAlign.center,
@@ -85,8 +107,12 @@ class SignUpScreen extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.07),
             GestureDetector(
-              onTap: (//functionality yet to be added
-                  ) {},
+              onTap: (){
+                  Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (BuildContext context) => HomePage()));
+                   },
               child: Container(
                 width: 300,
                 decoration: BoxDecoration(
@@ -122,8 +148,14 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 GestureDetector(
-                  onTap: (//functionality yet to be added
-                      ) {},
+                  onTap: (
+                      //functionality yet to be added
+                      ) {
+                    Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (BuildContext context) => HomePage()));
+                  },
                   child: Container(
                     height: 40,
                     width: 155,
@@ -142,8 +174,12 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (//functionality yet to be added
-                      ) {},
+                  onTap: (){
+                      Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (BuildContext context) => HomePage()));
+  },
                   child: Container(
                     height: 40,
                     width: 155,
@@ -173,8 +209,12 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(width: size.height * 0.02),
                 GestureDetector(
-                  onTap: (//functionality yet to be added
-                      ) {},
+                  onTap: () {
+                    Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (BuildContext context) => LoginScreen()));
+                  },
                   child: Text(
                     "Log In",
                     style: TextStyle(
