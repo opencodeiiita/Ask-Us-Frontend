@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool bookmarkUpdate(outline) {
+
     setState(() {
       outline = !outline;
     });
@@ -40,6 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Hero(
+                                               tag: 'imageHero',
+                                               child:Container(
+                                              width: 50.00,
+                                              height: 50.00,
+                                              decoration: new BoxDecoration(
+                                              image: new DecorationImage(
+                                                  image: ExactAssetImage('assets/images/askUslogo.png'),
+                                                  fit: BoxFit.fitHeight,
+                                                  ),
+                                                shape: BoxShape.circle,
+                                              )),),
                   Flexible(
                     child: Container(
                       alignment: Alignment.bottomCenter,

@@ -2,8 +2,34 @@ import 'package:ask_us/login.dart';
 import 'package:ask_us/main.dart';
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
+  @override
+    _SignUpScreenState createState() => _SignUpScreenState();
+}
+class _SignUpScreenState extends State<SignUpScreen>
+    with SingleTickerProviderStateMixin{
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late AnimationController controller;
+
+   @override
+   void initState() {
+     super.initState();
+
+     controller = AnimationController(
+       duration: Duration(seconds: 3),
+       vsync: this,
+     );
+
+     controller.forward();
+
+     controller.addListener((){
+       setState(() {
+
+       });
+     });
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +40,18 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Hero(
+                              tag: 'imageHero',
+                              child:Container(
+                             width: 100.00,
+                             height: 100.00,
+                             decoration: new BoxDecoration(
+                             image: new DecorationImage(
+                                 image: ExactAssetImage('assets/images/askUslogo.png'),
+                                 fit: BoxFit.fitHeight,
+                                 ),
+                               shape: BoxShape.circle,
+                             )),),
             Text(
               "AskUs",
               textAlign: TextAlign.center,
