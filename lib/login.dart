@@ -11,28 +11,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen>
-    with SingleTickerProviderStateMixin{
+    {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  late AnimationController controller;
 
-   @override
-   void initState() {
-     super.initState();
-
-     controller = AnimationController(
-       duration: Duration(seconds: 3),
-       vsync: this,
-     );
-
-     controller.forward();
-
-     controller.addListener((){
-       setState(() {
-
-       });
-     });
-   }
 
   @override
   Widget build(BuildContext context) {
