@@ -1,12 +1,12 @@
 // ASK US APP
 
-import 'package:ask_us/home.dart';
+// import 'package:ask_us/home.dart';
 import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'sign_up.dart';
-import 'profile_page.dart';
-import 'login.dart';
-import 'answer_screen.dart';
+// import 'sign_up.dart';
+// import 'profile_page.dart';
+// import 'login.dart';
+// import 'answer_screen.dart';
 
 void main() {
   runApp(MyApp());
