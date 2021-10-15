@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Question {
-  String name, email, question, description, image, upvote, chat;
+  String name, email, question, description, image, chat;
   int upvote;
   bool bookmark;
   Question(
