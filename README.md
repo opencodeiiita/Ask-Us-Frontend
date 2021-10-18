@@ -35,6 +35,24 @@ To get an idea how the app will look like, head over to the following figma link
 IMPORTANT NOTE:-
 Please attach screenshots of the runnuing app on your emulator of the changes that you have done before making a pr.
 
+## Using Api for Backend
+
+The Following endpoints are currently live :-
+- For posting new questions [POST] :- https://askusdev.herokuapp.com/question/
+- For getting list of all questions [GET] :- https://askusdev.herokuapp.com/question/
+- For creating new answer having question id = qid [POST] :- https://askusdev.herokuapp.com/question/{qid}/answer/
+- For retrieving all answers of question having id = qid. [GET] :- https://askusdev.herokuapp.com/question/{qid}/answer/
+
+Schema :- 
+
+![WhatsApp Image 2021-10-14 at 6 13 59 PM](https://user-images.githubusercontent.com/75803425/137736064-9acb8060-4c7b-4961-8be0-e99f93ee5637.jpeg)
+
+Data to be sent in JSON format.
+Fields required while creating a new question and answer are specified in schema, other fields will be filled automatically.
+
+For any doubt, feel free to ask us on our [discord](https://discord.gg/9McHvjbz) channel.
+ 
+
 ## Guidelines
 
 Please help us follow the best practice to make it easy for the reviewer as well as the contributor. We want to focus on the code quality more than on managing pull request ethics.
