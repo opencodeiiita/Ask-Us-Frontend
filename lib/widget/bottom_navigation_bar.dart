@@ -1,6 +1,6 @@
 import 'package:ask_us/answer_screen.dart';
 import 'package:ask_us/home.dart';
-import 'package:ask_us/main.dart';
+
 import 'package:ask_us/profile_page.dart';
 import 'package:ask_us/question_screen.dart';
 import 'package:flutter/material.dart';
