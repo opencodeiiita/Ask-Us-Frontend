@@ -1,13 +1,13 @@
 // ASK US APP
 
 // import 'package:ask_us/home.dart';
-import 'dart:convert';
 
-import 'package:ask_us/new_api.dart';
+
+import 'package:ask_us/calling_apis.dart';
 import 'package:ask_us/widget/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:ask_us/new_api.dart';
-import 'package:http/http.dart';
+
+
 import 'login.dart';
 // import 'sign_up.dart';
 // import 'profile_page.dart';
@@ -42,7 +42,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     ApiCall obj=ApiCall();
     obj.getData();

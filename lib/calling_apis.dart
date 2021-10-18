@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 
-class ApiCall extends StatelessWidget {
+class ApiCall {
 
   void getData() async{
     http.Response response= await http
@@ -14,9 +14,4 @@ class ApiCall extends StatelessWidget {
       }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    getData();
-    return Scaffold();
-  }
 }

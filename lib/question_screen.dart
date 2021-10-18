@@ -158,12 +158,32 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       top: Radius.circular(10),
                     ),
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'AskUs your question',
-                      hintStyle: TextStyle(fontWeight: FontWeight.w500),
-                      border: InputBorder.none,
-                    ),
+                  child: Column(
+                    children: [
+                      TextField(
+                        onChanged: (input){
+
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Your Question',
+                          hintStyle: TextStyle(fontWeight: FontWeight.w500,fontSize: 20),
+                          border: InputBorder.none,
+                        ),
+                      ),
+
+                      Container(color: Colors.grey.shade400,height: 2,),
+
+                      TextField(
+                        onChanged: (input){
+
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Description',
+                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
