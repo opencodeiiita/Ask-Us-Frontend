@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ask_us">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="ask_us"
         android:icon="@mipmap/ask"
