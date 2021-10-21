@@ -15,6 +15,7 @@ class ApiCall {
   }
 
   void postQuestion(String question, String description) async {
+    print("YO");
     var response =
         await http.post(Uri.parse('https://askusdev.herokuapp.com/question/'),
             headers: <String, String>{
