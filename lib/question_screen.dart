@@ -1,6 +1,7 @@
 import 'package:ask_us/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'calling_apis.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
@@ -8,6 +9,8 @@ class QuestionScreen extends StatefulWidget {
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
 }
+
+String question = "", description = "";
 
 class _QuestionScreenState extends State<QuestionScreen> {
   List<String> guidelinesList = [
@@ -161,21 +164,23 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   child: Column(
                     children: [
                       TextField(
-                        onChanged: (input){
-
+                        onChanged: (input) {
+                          question = input;
                         },
                         decoration: InputDecoration(
                           hintText: 'Your Question',
-                          hintStyle: TextStyle(fontWeight: FontWeight.w500,fontSize: 20),
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 20),
                           border: InputBorder.none,
                         ),
                       ),
-
-                      Container(color: Colors.grey.shade400,height: 2,),
-
+                      Container(
+                        color: Colors.grey.shade400,
+                        height: 2,
+                      ),
                       TextField(
-                        onChanged: (input){
-
+                        onChanged: (input) {
+                          description = input;
                         },
                         decoration: InputDecoration(
                           hintText: 'Description',
@@ -183,6 +188,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           border: InputBorder.none,
                         ),
                       ),
+                      TextButton(
+                          onPressed: () {
+                            ApiCall api = ApiCall();
+                            api.postQuestion(question, description);
+                          },
+                          child: Text("Post Question"))
                     ],
                   ),
                 ),
