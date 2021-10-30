@@ -55,9 +55,11 @@ class _ProfilePageState extends State<ProfilePage> {
     final XFile? image =
         await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
 
-    setState(() {
-      _image = File(image!.path);
-    });
+    if (image != null) {
+      setState(() {
+        _image = File(image.path);
+      });
+    }
   }
 
   void _showPicker(context) {
@@ -100,9 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String ph = '9798989898';
     return Scaffold(
       backgroundColor: Color(0xFFE7EBE7),
-      body: Column(
-        children: <Widget>[
-          Stack(
+      body: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.center,
             children: <Widget>[
@@ -118,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 // height: blockSizeVertical * .2, //it was 0.3
                 // width: blockSizeHorizontal,
-                height: SizeConfig.blockSizeVertical * 15,
+                height: SizeConfig.blockSizeVertical * 20,
                 width: SizeConfig.blockSizeHorizontal * 100,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -134,254 +134,257 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Positioned(
-                bottom: -SizeConfig.blockSizeVertical * 8,
-                child: Stack(
+                top: SizeConfig.blockSizeVertical * 26,
+                child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: SizeConfig.blockSizeHorizontal * 10,
+                    Container(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 4,
+                          top: SizeConfig.blockSizeHorizontal *8,
+                          bottom: SizeConfig.blockSizeHorizontal * 8), //20 tha
+                      width: SizeConfig.blockSizeHorizontal * 90,
+                      height: SizeConfig.blockSizeVertical * 32,
+                      decoration: BoxDecoration(
+                          color: Color(0xFFE7EBE7),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 1)]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "Name:",
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                "AskUs ID:",
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                "Email:",
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                "Phone No:",
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                name,
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 3,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                id,
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 3,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                mail,
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 3,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: SizeConfig.blockSizeVertical * 2),
+                              Text(
+                                ph,
+                                style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeVertical * 3,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: SizeConfig.blockSizeVertical * 3),
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: (
+                                //functionality yet to be added
+                                ) {},
+                            child: Container(
+                              height: SizeConfig.blockSizeVertical * 7,
+                              width: SizeConfig.blockSizeHorizontal * 90,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFE5DED8)),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 2),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "My Questions",
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    Icon(Icons.arrow_forward_ios_sharp),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.blockSizeVertical * 1),
+                          GestureDetector(
+                            onTap: (
+                                //functionality yet to be added
+                                ) {},
+                            child: Container(
+                              height: SizeConfig.blockSizeVertical * 7,
+                              width: SizeConfig.blockSizeHorizontal * 90,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFE5DED8)),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 2),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "My Answers",
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    Icon(Icons.arrow_forward_ios_sharp),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.blockSizeVertical * 1),
+                          GestureDetector(
+                            onTap: (
+                                //functionality yet to be added
+                                ) {},
+                            child: Container(
+                              height: SizeConfig.blockSizeVertical * 7,
+                              width: SizeConfig.blockSizeHorizontal * 90,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFE5DED8)),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 2),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "My Bookmarks",
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    Icon(Icons.arrow_forward_ios_sharp),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: SizeConfig.blockSizeVertical * 1),
+                          GestureDetector(
+                            onTap: (
+                                //functionality yet to be added
+                                ) {},
+                            child: Container(
+                              height: SizeConfig.blockSizeVertical * 7,
+                              width: SizeConfig.blockSizeHorizontal * 90,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFFE5DED8)),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 2),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Settings",
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.blockSizeVertical * 2.5,
+                                        color: Colors.black,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    Icon(Icons.arrow_forward_ios_sharp),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: SizeConfig.blockSizeVertical * 8,
+                ),
+                child: Stack(
+                  alignment: Alignment.bottomRight,    //
+                    children: [
+                      CircleAvatar(
+                      radius: SizeConfig.blockSizeHorizontal * 20,
                       backgroundColor: Colors.white,
                       backgroundImage: _image == null
                           ? NetworkImage(
                               'https://th.bing.com/th/id/OIP.4d8-5ZJ6WhMc0SrABL_NnwHaHa?pid=ImgDet&w=525&h=525&rs=1')
                           : Image.file(_image!).image,
                     ),
-                    Positioned(
-                      bottom: SizeConfig.blockSizeVertical * 0.05,
-                      right: SizeConfig.blockSizeHorizontal * 0.005,
-                      child: InkWell(
-                        onTap: () {
-                          _showPicker(context);
-                        },
-                        child: CircleAvatar(
+                    CircleAvatar(
                           radius: SizeConfig.blockSizeHorizontal * 3.5,
                           child: InkWell(
                             child: Icon(
                               Icons.edit,
                               color: Colors.white,
-                              size: SizeConfig.blockSizeHorizontal * 4,
                             ),
+                            onTap: () {
+                              print(DateTime.now());
+                              _showPicker(context);
+                            },
                           ),
                         ),
+                       ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 10),
-          Container(
-            padding: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 4), //20 tha
-            width: SizeConfig.blockSizeHorizontal * 90,
-            height: SizeConfig.blockSizeVertical * 25,
-            decoration: BoxDecoration(
-                color: Color(0xFFE7EBE7),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 1)]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Name:",
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 2.5,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      "AskUs ID:",
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 2.5,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      "Email:",
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 2.5,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      "Phone No:",
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 2.5,
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-                SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      name,
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 3,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      id,
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 3,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      mail,
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 3,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: SizeConfig.blockSizeVertical * 2),
-                    Text(
-                      ph,
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeVertical * 3,
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 3),
-          Container(
-            child: Column(
-              children: <Widget>[
-                GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
-                      ) {},
-                  child: Container(
-                    height: SizeConfig.blockSizeVertical * 7,
-                    width: SizeConfig.blockSizeHorizontal * 90,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFE5DED8)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "My Questions",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 2.5,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          Icon(Icons.arrow_forward_ios_sharp),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
-                      ) {},
-                  child: Container(
-                    height: SizeConfig.blockSizeVertical * 7,
-                    width: SizeConfig.blockSizeHorizontal * 90,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFE5DED8)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "My Answers",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 2.5,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          Icon(Icons.arrow_forward_ios_sharp),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
-                      ) {},
-                  child: Container(
-                    height: SizeConfig.blockSizeVertical * 7,
-                    width: SizeConfig.blockSizeHorizontal * 90,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFE5DED8)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "My Bookmarks",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 2.5,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          Icon(Icons.arrow_forward_ios_sharp),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                GestureDetector(
-                  onTap: (
-                      //functionality yet to be added
-                      ) {},
-                  child: Container(
-                    height: SizeConfig.blockSizeVertical * 7,
-                    width: SizeConfig.blockSizeHorizontal * 90,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFE5DED8)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Settings",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeVertical * 2.5,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          Icon(Icons.arrow_forward_ios_sharp),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );
