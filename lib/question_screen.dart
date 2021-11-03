@@ -2,6 +2,8 @@ import 'package:ask_us/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'calling_apis.dart';
+import 'dart:io'; // for using HttpClient
+import 'dart:convert'; // for using json.decode()
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
@@ -27,6 +29,33 @@ class _QuestionScreenState extends State<QuestionScreen> {
     'Lorem ipsum dolor sit amet, devolo consectetur adipiscing elit. Lorem ipsum .',
     'Lorem ipsum dolor sit amet, devolo consectetur adipiscing elit. Lorem ipsum .',
   ];
+  _QuestionScreenState(){
+    _fetchData();
+  }
+  // The list that contains information about photos
+  List _loadedQuestions = [];
+
+  // The function that fetches data from the API
+  Future<void> _fetchData() async {
+    const API_URL = 'https://askusdev.herokuapp.com/question/?format=json';
+
+    HttpClient client = new HttpClient();
+    client.autoUncompress = true;
+
+    final HttpClientRequest request = await client.getUrl(Uri.parse(API_URL));
+    request.headers
+        .set(HttpHeaders.contentTypeHeader, "application/json; charset=UTF-8");
+    final HttpClientResponse response = await request.close();
+
+    final String content = await response.transform(utf8.decoder).join();
+    final List data = json.decode(content);
+
+    setState(() {
+      data.retainWhere((element) => element["no_of_answers"]==0);
+      _loadedQuestions = data;
+      // print(_loadedQuestions);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +66,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           child: AppBar(
             shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(25))),
+                BorderRadius.vertical(bottom: Radius.circular(25))),
             centerTitle: true,
             backgroundColor: Color(0xffD66853),
             title: Padding(
@@ -101,6 +130,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             // ),
             buildAskCard(),
             buildGuidelineCard(),
+            buildQuestionsCard(),
           ],
         ),
       ),
@@ -108,138 +138,189 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget buildAskCard() => Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Card(
-          color: Color(0xffE5E5E5),
-          shape: RoundedRectangleBorder(
-              side: BorderSide(color: Colors.grey.shade400, width: 1.0),
-              borderRadius: BorderRadius.circular(20)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-            child: Column(
+    padding: const EdgeInsets.all(15.0),
+    child: Card(
+      color: Color(0xffE5E5E5),
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.grey.shade400, width: 1.0),
+          borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 30.0,
-                      backgroundColor: Color(0xffE5E5E5),
-                      child: Image.asset(tempProfilePic),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Lorem Ipsum',
-                            style: headerCustom(
-                              20,
-                              Color.fromRGBO(0, 0, 0, 0.6),
-                              FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            'loremipsumXXXXXX@xyz.com',
-                            style: headerCustom(
-                              13,
-                              Color.fromRGBO(0, 0, 0, 0.6),
-                              FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                CircleAvatar(
+                  radius: 30.0,
+                  backgroundColor: Color(0xffE5E5E5),
+                  child: Image.asset(tempProfilePic),
                 ),
-                SizedBox(height: 10),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  decoration: BoxDecoration(
-                    color: secondaryColor,
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(10),
-                      top: Radius.circular(10),
-                    ),
-                  ),
+                SizedBox(width: 10),
+                Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextField(
-                        onChanged: (input) {
-                          question = input;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Your Question',
-                          hintStyle: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 20),
-                          border: InputBorder.none,
+                      Text(
+                        'Lorem Ipsum',
+                        style: headerCustom(
+                          20,
+                          Color.fromRGBO(0, 0, 0, 0.6),
+                          FontWeight.w600,
                         ),
                       ),
-                      Container(
-                        color: Colors.grey.shade400,
-                        height: 2,
-                      ),
-                      TextField(
-                        onChanged: (input) {
-                          description = input;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Description',
-                          hintStyle: TextStyle(fontWeight: FontWeight.w500),
-                          border: InputBorder.none,
+                      Text(
+                        'loremipsumXXXXXX@xyz.com',
+                        style: headerCustom(
+                          13,
+                          Color.fromRGBO(0, 0, 0, 0.6),
+                          FontWeight.w600,
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            ApiCall api = ApiCall();
-                            api.postQuestion(question, description);
-                          },
-                          child: Text("Post Question"))
                     ],
                   ),
-                ),
+                )
               ],
             ),
-          ),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(10),
+                  top: Radius.circular(10),
+                ),
+              ),
+              child: Column(
+                children: [
+                  TextField(
+                    onChanged: (input) {
+                      question = input;
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Your Question',
+                      hintStyle: TextStyle(
+                          fontWeight: FontWeight.w500, fontSize: 20),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                  Container(
+                    color: Colors.grey.shade400,
+                    height: 2,
+                  ),
+                  TextField(
+                    onChanged: (input) {
+                      description = input;
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      hintStyle: TextStyle(fontWeight: FontWeight.w500),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        ApiCall api = ApiCall();
+                        api.postQuestion(question, description);
+                      },
+                      child: Text("Post Question"))
+                ],
+              ),
+            ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 
   Widget buildGuidelineCard() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-        child: Card(
-          color: secondaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: Colors.grey.shade400, width: 1.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Guidelines:',
-                  style: header1(),
-                ),
-                for (var i in guidelinesList)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.fiber_manual_record,
-                        size: 9,
-                      ),
-                      title: Transform.translate(
-                        offset: Offset(-28, 0),
-                        child: Text(
-                          i.toString(),
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                    ),
-                  )
-              ],
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    child: Card(
+      color: secondaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(color: Colors.grey.shade400, width: 1.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Guidelines:',
+              style: header1(),
             ),
-          ),
+            for (var i in guidelinesList)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.fiber_manual_record,
+                    size: 9,
+                  ),
+                  title: Transform.translate(
+                    offset: Offset(-28, 0),
+                    child: Text(
+                      i.toString(),
+                      style: TextStyle(fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+              )
+          ],
         ),
-      );
+      ),
+    ),
+  );
+
+  Widget buildQuestionsCard() => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    child: Card(
+      color: secondaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(color: Colors.grey.shade400, width: 1.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child:
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Questions:',
+              style: header1(),
+            ),
+            for (var i in _loadedQuestions)
+            // if(i["no_of_answers"]==0)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      "Question ${_loadedQuestions.indexOf(i)+1}) " + i["title"],
+                    ),
+                    Text(
+                      "Description: " + i["description"],
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+              )
+
+          ],
+        ),
+        // (_loadedQuestions.isEmpty?Text(
+        //   'No Questions',
+        //   style: header2(),
+        // ):ListView.builder(itemCount: _loadedQuestions.length, itemBuilder: (BuildContext context, int index){
+        //   return Text(
+        //     _loadedQuestions[index]["title"],
+        //     style: header1(),
+        //   );
+        // }))
+      ),
+    ),
+  );
 }
